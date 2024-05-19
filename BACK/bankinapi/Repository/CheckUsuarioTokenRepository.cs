@@ -18,8 +18,8 @@ namespace bankinapi.Repository
 
         public async Task<Usuario> SelecionaUsuarioo(Usuario usu)
         {
-            Usuario product = await _db.Usuarios.Where(db => db.CPF == usu.CPF && db.SENHA == usu.SENHA).FirstOrDefaultAsync();
-            return _mapper.Map<Usuario>(product);
+            Usuario usuario = await _db.Usuarios.Where(db => db.CPF == usu.CPF && db.SENHA == usu.SENHA).FirstOrDefaultAsync();
+            return _mapper.Map<Usuario>(usuario);
         }
     }
 }

@@ -1,6 +1,7 @@
 using bankinapi.Models;
 using bankinapi.Models.Dto;
 using bankinapi.Repository;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -31,9 +32,19 @@ namespace bankinapi.GenerateTokenController
             try
             {
                 Usuario userDt = await _usuarioToken.SelecionaUsuarioo(usu);
-                _response.Result = userDt;
-                var theToken = geraToken(userDt);
-                _response.Token = theToken;
+
+                if (userDt == null)
+                {
+                    _response.IsSuccess = false;
+                    _response.ErrorMessage
+                    = new List<string>() { "Usuario não cadastrado" };
+                }
+                else
+                {
+                    _response.Result = userDt;
+                    var theToken = geraToken(userDt);
+                    _response.Token = theToken;
+                }              
             }
             catch (Exception ex)
             {

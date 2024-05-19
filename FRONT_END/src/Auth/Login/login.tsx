@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import fillBox from '../../assets/fillBox.png';
-import { TextField } from '@mui/material';
-import CustomButton from '../../Components/customButton';
 import EmailInput from '../../Components/emailInput';
 import PasswordInput from '../../Components/passwordInput';
+import { registerUser } from '../../services/registerUser';
 
 const Login: React.FC = () => {
     const [email, setEmail] = useState('');
@@ -21,7 +20,14 @@ const Login: React.FC = () => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log('Email:', email);
-        console.log('Senha:', password);
+        console.log('Senha:', password);   
+        
+        var userData = {
+            email,
+            password,
+            cpf:'123.456.789-10'            
+        }      
+        registerUser(userData);             
     };
 
     return (

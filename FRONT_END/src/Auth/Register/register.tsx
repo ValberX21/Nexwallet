@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
-import CustomButton from '../../Components/customButton';
-import { registerUser } from '../../services/registerUser';
 import { Link } from 'react-router-dom';
 import '../../styles/index.css'
 import unfillBox from '../../assets/unfillBox.png';
 import { useRegisterEvents } from '../../events/formEvents/registerEvents';
 
-
 const Register: React.FC = () => {
-    const { formData, errors, formComplete, handleInputChange, handleSubmit } = useRegisterEvents();
+    const { formData, errors, handleInputChange, handleSubmit } = useRegisterEvents();
     const [showSecondForm, setShowSecondForm] = useState(false);
 
     const toggleSecondForm = () => {

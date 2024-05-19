@@ -1,21 +1,26 @@
-export const registerUser = async (userData: any) => {
+export const registerUser = (userData: any) => {
     try {
-      const response = await fetch('http://seu-backend.com/api/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(userData),
-      });
-  
-      if (!response.ok) {
-        const errorData = await response.json(); // Extrai o objeto de erro do corpo da resposta
-        throw new Error(errorData.message || 'Erro ao cadastrar usuário');
-      }
-  
-      const data = await response.json();
-      return data; // Você pode retornar qualquer dado retornado pelo backend, se necessário
-    } catch (error) {
-        // throw new Error(error.message);
-    }
-  };
+      fetch('https://localhost:44390/GenerateToken/autentica',{
+        method:'POST',       
+        body: JSON.stringify({
+                 cpf:'123.456.789-10',
+                 email:userData.email,
+                 senha:userData.senha,
+        }),
+        headers:{
+          'Accept':'application/json',
+          'Content-Type':'application/json'
+          }
+    })
+    .then(res=>res.json())
+    .then((result)=>{
+        alert(result);
+        console.log(result)
+    },(error)=>{
+        alert(`Ops !, alguma coisa deu errado ${error}`);
+        console.log(error.message);
+    })
+    }catch (errorData) {
+      console.log(errorData);
+  }
+}
