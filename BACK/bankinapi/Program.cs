@@ -16,6 +16,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddScoped<CheckUsuarioTokenRepository>();
+builder.Services.AddScoped<CadastroUsuarioRepository>();
 
 builder.Services.AddCors(options =>
 {

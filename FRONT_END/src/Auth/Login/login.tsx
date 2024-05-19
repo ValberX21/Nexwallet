@@ -23,9 +23,8 @@ const Login: React.FC = () => {
         console.log('Senha:', password);   
         
         var userData = {
-            email,
-            password,
-            cpf:'123.456.789-10'            
+            email,        //Alterar para CPF
+            password,           
         }      
         registerUser(userData);             
     };
