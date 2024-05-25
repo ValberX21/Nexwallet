@@ -37,17 +37,39 @@ namespace bankinapi.Repository
 
                 if (usu == null)
                 {
-                    return 1;
+                    return 0;
                 }
                 else
                 {
-                    return 2;
+                    return 1;
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
-                return 3;
+                return 2;
+            }
+        }
+
+        public int validaUsuarioSenha(Usuario usuarioDto)
+        {
+            try
+            {
+                Usuario usu = _db.Usuarios.Where(usu => usu.CPF == usuarioDto.CPF && usu.SENHA == usuarioDto.SENHA).FirstOrDefault();
+
+                if (usu != null)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return 5;
             }
         }
     }

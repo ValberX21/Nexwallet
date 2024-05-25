@@ -31,20 +31,37 @@ namespace bankinapi.GenerateTokenController
         {
             try
             {
-                Usuario userDt = await _usuarioToken.SelecionaUsuarioo(usu);
+                int userDt = await _usuarioToken.buscaUsuario(usu);
 
-                if (userDt == null)
+                if (userDt == 0)
                 {
                     _response.IsSuccess = false;
                     _response.ErrorMessage
                     = new List<string>() { "Usuario não cadastrado" };
                 }
-                else
+
+                if (userDt == 1)
                 {
-                    _response.Result = userDt;
-                    var theToken = geraToken(userDt);
+                    Usuario dadosUsuario = await _usuarioToken.buscaDadosUsuario(usu);
+                    _response.Result = dadosUsuario;
+                    var theToken = geraToken(dadosUsuario);
                     _response.Token = theToken;
-                }              
+
+                }
+
+                if (userDt == 2)
+                {
+                    _response.IsSuccess = false;
+                    _response.ErrorMessage
+                    = new List<string>() { "Usuario ou senha incorretos" };
+                }
+
+                if (userDt == 3)
+                {
+                    _response.IsSuccess = false;
+                    _response.ErrorMessage
+                    = new List<string>() { "Erro no login de usuario (Repository)" };
+                }
             }
             catch (Exception ex)
             {

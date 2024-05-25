@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("bankinapi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ab2ccbe18dcfb8cbab5f6a3dda04112bc30ffc32")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+63eead420169e1ccbd1b3e25ca3c61c3b2e278be")]
 [assembly: System.Reflection.AssemblyProductAttribute("bankinapi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("bankinapi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

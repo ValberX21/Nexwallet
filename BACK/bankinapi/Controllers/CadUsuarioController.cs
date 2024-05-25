@@ -24,44 +24,43 @@ namespace bankinapi.Controllers
         [Route("adicionaNovoUsuario")]
         public async Task<object> PostAsync([FromBody] Usuario usu)
         {
-            bool usuarioCadatrado = false;
             var jsonObject = new object();
+
             try
             {
+                //Verifica se usuario já esta cadastrado
                 int checkSeUsuarioExiste = _cadUsuario.verificaUsuarioNaBase(usu);
 
-                if (checkSeUsuarioExiste == 1)
+                if(checkSeUsuarioExiste == 0)
                 {
-                    usuarioCadatrado = await _cadUsuario.inseriNovoUsuario(usu);
-                    if (usuarioCadatrado)
+                    bool cadResult = await _cadUsuario.inseriNovoUsuario(usu);
+
+                    if (cadResult)
                     {
                         jsonObject = new
                         {
-
                             success = true,
-                            message = "Usuário cadastrado com sucesso!"
+                            message = "Usuario cadastrado com sucesso"
                         };
-                        return jsonObject;
                     }
-                }
-                else if (checkSeUsuarioExiste == 2)
-                {
-                    jsonObject = new
+                    else
                     {
-                        success = false,
-                        message = "Usuário já cadastrado"
-                    };
-                    return jsonObject;
+                        jsonObject = new
+                        {
+                            success = false,
+                            message = "Erro ao cadastrar usuario"
+                        };
+                    }
+                   
                 }
 
-                else if (checkSeUsuarioExiste == 3)
+                if (checkSeUsuarioExiste == 1)
                 {
                     jsonObject = new
                     {
                         success = false,
-                        message = "Erro ao cadastrar usuario no entity",
+                        message = "Usuario ja cadastrado"
                     };
-                    return jsonObject;
                 }
                 return jsonObject;
             }
