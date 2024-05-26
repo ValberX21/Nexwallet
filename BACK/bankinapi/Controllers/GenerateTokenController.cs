@@ -25,6 +25,12 @@ namespace bankinapi.GenerateTokenController
             _configuration = configuration;
         }
 
+        [HttpGet("test")]
+        public string Test()
+        {
+            return "Api funcionando";
+        }
+
         [HttpPost]
         [Route("autentica")]
         public async Task<object> Post([FromBody] Usuario usu)

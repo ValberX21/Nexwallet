@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "QlLsYPOJTAdcHCpvWliPNDzSFEaQDIp5R/E4tYKg4+o=",
+  "Source": "bankinapi",
+  "BasePath": "_content/bankinapi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
