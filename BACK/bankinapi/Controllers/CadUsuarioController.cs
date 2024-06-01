@@ -22,10 +22,8 @@ namespace bankinapi.Controllers
 
         [HttpPost]
         [Route("adicionaNovoUsuario")]
-        public async Task<object> PostAsync([FromBody] Usuario usu)
+        public async Task<IActionResult> PostAsync([FromBody] Usuario usu)
         {
-            var jsonObject = new object();
-
             try
             {
                 //Verifica se usuario já esta cadastrado
@@ -36,42 +34,28 @@ namespace bankinapi.Controllers
                     bool cadResult = await _cadUsuario.inseriNovoUsuario(usu);
 
                     if (cadResult)
-                    {
-                        jsonObject = new
-                        {
-                            success = true,
-                            message = "Usuario cadastrado com sucesso"
-                        };
+                    {                       
+                        return Ok("Usuario cadastrado com sucesso");
                     }
                     else
                     {
-                        jsonObject = new
-                        {
-                            success = false,
-                            message = "Erro ao cadastrar usuario"
-                        };
+                       return StatusCode(500, "ERRO AO CADASTRAR USUARIO - ");
                     }
                    
                 }
 
                 if (checkSeUsuarioExiste == 1)
                 {
-                    jsonObject = new
-                    {
-                        success = false,
-                        message = "Usuario ja cadastrado"
-                    };
+                    return Conflict("Usuario ja cadastrado");
                 }
-                return jsonObject;
+                else
+                {
+                    return NoContent(); 
+                }
             }
             catch (Exception ex)
             {
-                jsonObject = new
-                {
-                    success = false,
-                    message = "ERRO AO CADASTRAR USUARIO - " + ex.Message
-                };
-                return jsonObject;
+                return StatusCode(500, "ERRO AO CADASTRAR USUARIO - " + ex.Message);
             }
         }
     }

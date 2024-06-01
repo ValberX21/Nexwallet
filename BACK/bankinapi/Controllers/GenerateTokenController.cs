@@ -33,7 +33,7 @@ namespace bankinapi.GenerateTokenController
 
         [HttpPost]
         [Route("autentica")]
-        public async Task<object> Post([FromBody] Usuario usu)
+        public async Task<IActionResult> Post([FromBody] Usuario usu)
         {
             try
             {
