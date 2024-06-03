@@ -30,9 +30,9 @@ const Register: React.FC = () => {
     return (
         <div className="bg-[#171717] h-screen w-screen flex justify-center items-center flex-col font-inter">
 
-            <img src={unfillBox} alt="Descrição da imagem" className=" w-[80%]" />
+            <img src={unfillBox} alt="Descrição da imagem" className=" w-[80%] md:w-[15%]" />
             <div className=" p-6 w-80 text-[#e7e7e7] flex flex-col justify-center items-center">
-                <form onSubmit={handleSubmit} className="">
+                <form onSubmit={handleSubmit} >
                     {!showSecondForm && (
                         <>
                             <div className="py-3">
@@ -45,7 +45,7 @@ const Register: React.FC = () => {
                                         value={formData.fullName}
                                         onChange={handleInputChange}
                                         required
-                                        className="uk-input border-grayText-500 rounded w-64 focus:border-orangeGrid-500"
+                                        className="uk-input border-grayText-500 rounded w-64 focus:border-orangeGrid-500 text-grayText-200"
 
                                     />
                                     {errors.fullName && <p className="text-red-500">{errors.fullName}</p>}
@@ -57,7 +57,7 @@ const Register: React.FC = () => {
                                     type="text"
                                     id="cpf"
                                     name="cpf"
-                                    className="uk-input border-grayText-500 rounded w-64 focus:border-orangeGrid-500"
+                                    className="uk-input border-grayText-500 rounded w-64 focus:border-orangeGrid-500 text-grayText-200"
                                     value={formatCPF(formData.cpf)}
                                     onChange={e => handleInputChange(e)}
                                     required
@@ -66,7 +66,7 @@ const Register: React.FC = () => {
                             </div>
                             <div className="py-3">
                                 <input
-                                    className="uk-input border-grayText-500 rounded w-64 focus:border-orangeGrid-500"
+                                    className="uk-input border-grayText-500 rounded w-64 focus:border-orangeGrid-500 text-grayText-200"
                                     placeholder="E-mail:"
                                     type="email"
                                     id="email"
@@ -79,7 +79,7 @@ const Register: React.FC = () => {
                             </div>
                             <div className="py-3">
                                 <input
-                                    className="uk-input border-grayText-500 rounded w-64 focus:border-orangeGrid-500"
+                                    className="uk-input border-grayText-500 rounded w-64 focus:border-orangeGrid-500 text-grayText-200"
                                     placeholder="Nova senha:"
                                     type="password"
                                     id="password"
@@ -96,7 +96,7 @@ const Register: React.FC = () => {
                                     type="password"
                                     id="confirmPassword"
                                     name="confirmPassword"
-                                    className="uk-input border-grayText-500 rounded w-64 focus:border-orangeGrid-500"
+                                    className="uk-input border-grayText-500 rounded w-64 focus:border-orangeGrid-500 text-grayText-200"
                                     value={formData.confirmPassword}
                                     onChange={handleInputChange}
                                     required
@@ -117,7 +117,7 @@ const Register: React.FC = () => {
                         <div className="teste" id="secondForm">
                             <div className="py-3">
                                 <input
-                                    className="uk-input border-grayText-500 rounded w-64 focus:border-orangeGrid-500"
+                                    className="uk-input border-grayText-500 rounded w-64 focus:border-orangeGrid-500 text-grayText-200"
                                     placeholder="CEP"
                                     type="text"
                                     id="cep"
@@ -131,7 +131,7 @@ const Register: React.FC = () => {
 
                             <div className="py-3">
                                 <input
-                                    className="uk-input border-grayText-500 rounded w-64 focus:border-orangeGrid-500"
+                                    className="uk-input border-grayText-500 rounded w-64 focus:border-orangeGrid-500 text-grayText-200"
                                     placeholder="Rua"
                                     type="text"
                                     id="street"
@@ -142,7 +142,7 @@ const Register: React.FC = () => {
                             </div>
                             <div className="py-3">
                                 <input
-                                    className="uk-input border-grayText-500 rounded w-64 focus:border-orangeGrid-500"
+                                    className="uk-input border-grayText-500 rounded w-64 focus:border-orangeGrid-500 text-grayText-200"
                                     placeholder="Cidade"
                                     type="text"
                                     id="city"

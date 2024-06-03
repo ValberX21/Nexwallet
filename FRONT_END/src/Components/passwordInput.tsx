@@ -11,7 +11,7 @@ const PasswordInput: React.FC<PasswordInputProps> = ({ password, handlePasswordC
       <div className="uk-inline">
       <span className="uk-form-icon" style={{ color: '#f97316' }} uk-icon="icon: lock"></span>
         <input
-          className="uk-input border-grayText-500 rounded w-64 focus:border-orangeGrid-500" 
+          className="uk-input border-grayText-500 rounded w-64 focus:border-orangeGrid-500 text-grayText-200" 
           placeholder="Senha"
           type="password"
           id="password"

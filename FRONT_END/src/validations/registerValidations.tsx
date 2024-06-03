@@ -44,6 +44,12 @@ export const validateCPF = (cpf: string): string => {
     return ''; 
 };
 
+export const formatCPF = (cpf: string): string => {
+    return cpf
+        .replace(/\D/g, '') // Remove caracteres não numéricos
+        .replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4'); // Adiciona a máscara
+};
+
 
 export const validateFullName = (fullName: string): string => {
     const fullNameRegex = /^[a-zA-Z]+\s+[a-zA-Z]+$/;
