@@ -9,8 +9,7 @@ const Register: React.FC = () => {
     const [showSecondForm, setShowSecondForm] = useState(false);
 
     const toggleSecondForm = () => {
-        // Verificar se os campos iniciais são válidos
-        const isValid = formData.fullName.trim() !== '' && formData.cpf.trim() !== '' && formData.email.trim() !== '' && formData.password.trim() !== '' && formData.confirmPassword.trim() !== '' && Object.values(errors).every(error => error === '');
+        const isValid = formData.firstName.trim() !== '' && formData.lastName.trim() !== '' && formData.cpf.trim() !== '' && formData.email.trim() !== '' && formData.password.trim() !== '' && formData.confirmPassword.trim() !== '' && Object.values(errors).every(error => error === '');
         if (isValid) {
             setShowSecondForm(!showSecondForm);
             document.getElementById('secondForm')?.scrollIntoView({ behavior: 'smooth' });
@@ -29,26 +28,39 @@ const Register: React.FC = () => {
 
     return (
         <div className="bg-[#171717] h-screen w-screen flex justify-center items-center flex-col font-inter">
-
             <img src={unfillBox} alt="Descrição da imagem" className=" w-[80%] md:w-[15%]" />
-            <div className=" p-6 w-80 text-[#e7e7e7] flex flex-col justify-center items-center">
-                <form onSubmit={handleSubmit} >
+            <div className="p-6 w-80 text-[#e7e7e7] flex flex-col justify-center items-center">
+                <form onSubmit={handleSubmit}>
                     {!showSecondForm && (
                         <>
                             <div className="py-3">
                                 <div className="uk-inline">
                                     <input
-                                        placeholder="Nome Completo"
+                                        placeholder="Nome"
                                         type="text"
-                                        id="fullName"
-                                        name="fullName"
-                                        value={formData.fullName}
+                                        id="firstName"
+                                        name="firstName"
+                                        value={formData.firstName}
                                         onChange={handleInputChange}
                                         required
                                         className="uk-input border-grayText-500 rounded w-64 focus:border-orangeGrid-500 text-grayText-200"
-
                                     />
-                                    {errors.fullName && <p className="text-red-500">{errors.fullName}</p>}
+                                    {errors.firstName && <p className="text-red-500">{errors.firstName}</p>}
+                                </div>
+                            </div>
+                            <div className="py-3">
+                                <div className="uk-inline">
+                                    <input
+                                        placeholder="Sobrenome"
+                                        type="text"
+                                        id="lastName"
+                                        name="lastName"
+                                        value={formData.lastName}
+                                        onChange={handleInputChange}
+                                        required
+                                        className="uk-input border-grayText-500 rounded w-64 focus:border-orangeGrid-500 text-grayText-200"
+                                    />
+                                    {errors.lastName && <p className="text-red-500">{errors.lastName}</p>}
                                 </div>
                             </div>
                             <div className="py-3">
@@ -104,14 +116,11 @@ const Register: React.FC = () => {
                                 {errors.confirmPassword && <p className="text-red-500">{errors.confirmPassword}</p>}
                             </div>
                             <div className="flex flex-col justify-center items-center pt-5">
-                        <button className="text-grayText-700 font-semibold font-inter text-lg w-64 bg-grayText-50 rounded p-2" type="button" onClick={toggleSecondForm}>CONTINUAR</button>
-                        <h3 className="pt-3 text-grayText-300">Já é cadastrado? <Link to="/cadastro" className=" text-orangeGrid-500">Faça login</Link></h3>
-                    </div>
+                                <button className="text-grayText-700 font-semibold font-inter text-lg w-64 bg-grayText-50 rounded p-2" type="button" onClick={toggleSecondForm}>CONTINUAR</button>
+                                <h3 className="pt-3 text-grayText-300">Já é cadastrado? <Link to="/cadastro" className=" text-orangeGrid-500">Faça login</Link></h3>
+                            </div>
                         </>
-                        
                     )}
-
-
 
                     {showSecondForm && (
                         <div className="teste" id="secondForm">
@@ -128,7 +137,6 @@ const Register: React.FC = () => {
                                 />
                                 {errors.cep && <p className="text-red-500">{errors.cep}</p>}
                             </div>
-
                             <div className="py-3">
                                 <input
                                     className="uk-input border-grayText-500 rounded w-64 focus:border-orangeGrid-500 text-grayText-200"
@@ -152,15 +160,13 @@ const Register: React.FC = () => {
                                 />
                             </div>
                             <div className="flex flex-col justify-center items-center pt-5">
-                            <button className="text-grayText-700 font-semibold font-inter text-lg w-64 bg-grayText-50 rounded p-2" type="submit">CRIAR CONTA</button>
+                                <button className="text-grayText-700 font-semibold font-inter text-lg w-64 bg-grayText-50 rounded p-2" type="submit">CRIAR CONTA</button>
                                 <h3 className="pt-3 text-grayText-300">Já é cadastrado? <Link to="/cadastro" className=" text-orangeGrid-500">Faça login</Link></h3>
                             </div>
                         </div>
                     )}
                 </form>
-
             </div>
-
         </div>
     );
 };

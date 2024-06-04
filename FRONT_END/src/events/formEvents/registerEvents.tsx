@@ -1,11 +1,12 @@
 import React from 'react';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
-import { validateEmail, validateCPF, validateFullName, validatePassword, validatePasswordConfirmation, fetchAddressByCep } from '../../validations/registerValidations';
+import { validateEmail, validateCPF, validateName, validatePassword, validatePasswordConfirmation, fetchAddressByCep } from '../../validations/registerValidations';
 
 export const useRegisterEvents = () => {
     const [formData, setFormData] = useState({
-        fullName: '',
+        firstName: '',
+        lastName: '',
         cpf: '',
         email: '',
         password: '',
@@ -16,7 +17,8 @@ export const useRegisterEvents = () => {
     });
 
     const [errors, setErrors] = useState({
-        fullName: '',
+        firstName: '',
+        lastName: '',
         cpf: '',
         email: '',
         password: '',
@@ -35,25 +37,21 @@ export const useRegisterEvents = () => {
         setFormData((prevFormData) => {
             const newFormData = { ...prevFormData, [name]: inputValue };
 
-            // Adicionando logs para depuração
-            console.log("Input changed: ", name, value);
-            console.log("Form data: ", newFormData);
-
             let newErrors = { ...errors };
 
             if (name === 'email') {
                 newErrors.email = validateEmail(value);
             } else if (name === 'cpf') {
                 newErrors.cpf = validateCPF(value);
-            } else if (name === 'fullName') {
-                newErrors.fullName = validateFullName(value);
+            } else if (name === 'firstName') {
+                newErrors.firstName = validateName(value);
+            } else if (name === 'lastName') {
+                newErrors.lastName = validateName(value);
             } else if (name === 'password') {
                 newErrors.password = validatePassword(value);
-                newErrors.confirmPassword = validatePasswordConfirmation(value, newFormData.confirmPassword); // Verificar a confirmação de senha ao alterar a senha
-                console.log("Password validation error: ", newErrors.password);
+                newErrors.confirmPassword = validatePasswordConfirmation(value, newFormData.confirmPassword);
             } else if (name === 'confirmPassword') {
-                newErrors.confirmPassword = validatePasswordConfirmation(newFormData.password, value); // Verificar a confirmação de senha ao alterar a confirmação de senha
-                console.log("Confirm Password validation error: ", newErrors.confirmPassword);
+                newErrors.confirmPassword = validatePasswordConfirmation(newFormData.password, value);
             } else if (name === 'cep') {
                 if (value.length === 8) {
                     fetchAddressByCep(value).then((address) => {

@@ -6,10 +6,8 @@ export const validateEmail = (email: string): string => {
 export const validateCPF = (cpf: string): string => {
     const formattedValue = cpf.replace(/\D/g, '');
 
-    // Verifica se o CPF está completo
     if (formattedValue.length !== 11) return 'CPF inválido';
 
-    // Validação do CPF
     const cpfNumbers = formattedValue.substring(0, 9);
     const cpfDigits = formattedValue.substring(9);
     const cpfArray = Array.from(cpfNumbers);
@@ -41,19 +39,17 @@ export const validateCPF = (cpf: string): string => {
 
     if (parseInt(cpfDigits[1]) !== secondDigit) return 'CPF inválido';
 
-    return ''; 
+    return '';
 };
 
 export const formatCPF = (cpf: string): string => {
     return cpf
-        .replace(/\D/g, '') // Remove caracteres não numéricos
-        .replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4'); // Adiciona a máscara
+        .replace(/\D/g, '')
+        .replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
 };
 
-
-export const validateFullName = (fullName: string): string => {
-    const fullNameRegex = /^[a-zA-Z]+\s+[a-zA-Z]+$/;
-    return fullNameRegex.test(fullName) ? '' : 'Informe nome e sobrenome';
+export const validateName = (name: string): string => {
+    return name.length >= 3 ? '' : 'Nome deve conter pelo menos 3 caracteres';
 };
 
 export const validatePassword = (password: string): string => {
