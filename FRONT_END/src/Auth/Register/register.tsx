@@ -4,6 +4,7 @@ import '../../styles/index.css'
 import unfillBox from '../../assets/unfillBox.png';
 import { useRegisterEvents } from '../../events/formEvents/registerEvents';
 
+
 const Register: React.FC = () => {
     const { formData, errors, handleInputChange, handleSubmit } = useRegisterEvents();
     const [showSecondForm, setShowSecondForm] = useState(false);
