@@ -1,32 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Danil\\Nexwallet-2\\BACK\\bankinapi\\bankinapi.csproj": {}
+    "/Users/valbermartins/Developer/Nexwallet/BACK/bankinapi/bankinapi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Danil\\Nexwallet-2\\BACK\\bankinapi\\bankinapi.csproj": {
+    "/Users/valbermartins/Developer/Nexwallet/BACK/bankinapi/bankinapi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Danil\\Nexwallet-2\\BACK\\bankinapi\\bankinapi.csproj",
+        "projectUniqueName": "/Users/valbermartins/Developer/Nexwallet/BACK/bankinapi/bankinapi.csproj",
         "projectName": "bankinapi",
-        "projectPath": "C:\\Users\\Danil\\Nexwallet-2\\BACK\\bankinapi\\bankinapi.csproj",
-        "packagesPath": "C:\\Users\\Danil\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Danil\\Nexwallet-2\\BACK\\bankinapi\\obj\\",
+        "projectPath": "/Users/valbermartins/Developer/Nexwallet/BACK/bankinapi/bankinapi.csproj",
+        "packagesPath": "/Users/valbermartins/.nuget/packages/",
+        "outputPath": "/Users/valbermartins/Developer/Nexwallet/BACK/bankinapi/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "D:\\VS STUDIOOO\\a\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Danil\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/valbermartins/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -39,11 +32,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -124,24 +112,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[7.0.19, 7.0.19]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[7.0.19, 7.0.19]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[7.0.19, 7.0.19]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[7.0.19, 7.0.19]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -150,7 +120,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.202/RuntimeIdentifierGraph.json"
         }
       }
     }
