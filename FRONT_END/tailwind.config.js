@@ -15,29 +15,41 @@ module.exports = {
       },
       colors: {
         darkBackground: '#171717',
-        grayText: {
-          50: '#eaeaea',
-          100: '#fafafa',
-          150: 'f5f5f5',
-          200: '#999',
-          300: '#888',
-          400: '#666',
-          500: '#444',
-          600: '#333',
-          700: '#111',
+        text: {
+          base: '#737373',
+          light: '#A6A6A6',
+          lighter: '#D9D9D9',
+          superLight: '#F0F0F0',
+          ultraLight: '#FFFFFF',
         },
-        orangeGrid: {
-          '50': '#fff7ed',
-          '100': '#ffedd5',
-          '200': '#fed7aa',
-          '300': '#fdba74',
-          '400': '#fb923c',
-          '500': '#f97316',
-          '600': '#ea580c',
-          '700': '#c2410c',
-          '800': '#9a3412',
-          '900': '#7c2d12',
-          '950': '#431407',
+        borders: {
+          base: '#404040',
+          light: '#595959',
+          lighter: '#8C8C8C',
+        },
+        cards: {
+          base: '#1E1E1E',
+          hover: '#333333',
+          selected: '#4D4D4D',
+        },
+        icons: '#f97316',
+        buttons: {
+          base: '#f97316',
+          hover: '#ea580c',
+          active: '#c2410c',
+        },
+      },
+      animation: {
+        meteor: "meteor 5s linear infinite",
+      },
+      keyframes: {
+        meteor: {
+          "0%": { transform: "rotate(215deg) translateX(0)", opacity: 1 },
+          "70%": { opacity: 1 },
+          "100%": {
+            transform: "rotate(215deg) translateX(-500px)",
+            opacity: 0,
+          },
         },
       },
     },

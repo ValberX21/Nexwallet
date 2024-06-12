@@ -4089,24 +4089,32 @@
     ]
   },
   "packageFolders": {
-    "/Users/valbermartins/.nuget/packages/": {}
+    "C:\\Users\\Danil\\.nuget\\packages\\": {},
+    "D:\\VS STUDIOOO\\a\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/valbermartins/Developer/Nexwallet/BACK/bankinapi/bankinapi.csproj",
+      "projectUniqueName": "C:\\Users\\Danil\\Desktop\\Nexwallet-1\\BACK\\bankinapi\\bankinapi.csproj",
       "projectName": "bankinapi",
-      "projectPath": "/Users/valbermartins/Developer/Nexwallet/BACK/bankinapi/bankinapi.csproj",
-      "packagesPath": "/Users/valbermartins/.nuget/packages/",
-      "outputPath": "/Users/valbermartins/Developer/Nexwallet/BACK/bankinapi/obj/",
+      "projectPath": "C:\\Users\\Danil\\Desktop\\Nexwallet-1\\BACK\\bankinapi\\bankinapi.csproj",
+      "packagesPath": "C:\\Users\\Danil\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Danil\\Desktop\\Nexwallet-1\\BACK\\bankinapi\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "D:\\VS STUDIOOO\\a\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "/Users/valbermartins/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Danil\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -4119,6 +4127,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -4199,6 +4212,24 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[7.0.19, 7.0.19]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[7.0.19, 7.0.19]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[7.0.19, 7.0.19]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[7.0.19, 7.0.19]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -4207,7 +4238,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.202/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
       }
     }
   }

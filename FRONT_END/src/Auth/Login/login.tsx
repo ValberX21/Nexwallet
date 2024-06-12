@@ -45,7 +45,7 @@ const Login: React.FC = () => {
     };
 
     return (
-        <div className="bg-[#171717] h-screen w-screen flex justify-center items-center flex-col font-inter">
+        <div className=" bg-darkBackground h-screen w-screen flex justify-center items-center flex-col font-inter">
             <img src={fillBox} alt="Descrição da imagem" className='loginImg md:w-[20%]'  />
 
             <div className=" flex items-center justify-center flex-col ">
@@ -57,8 +57,8 @@ const Login: React.FC = () => {
                             <PasswordInput password={password} handlePasswordChange={handlePasswordChange} />
                         </div>
                         <div className="flex flex-col justify-center items-center ">
-                            <button className=" text-grayText-700 font-semibold font-inter text-lg w-64 bg-grayText-50  rounded  p-2" type="submit">LOGIN</button>
-                            <h3 className="pt-3 text-grayText-300">Esqueceu a senha? <Link to="/cadastro" className=" text-orangeGrid-500">Nova senha</Link></h3>
+                            <button className=" text-grayText-700 font-semibold font-inter text-lg w-64 bg-text-lighter  rounded  p-2" type="submit">LOGIN</button>
+                            <h3 className="pt-3 text-text-light">Esqueceu a senha? <Link to="/cadastro" className=" text-icons">Nova senha</Link></h3>
                         </div>
                     </form>
                 </div>
