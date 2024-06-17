@@ -57,8 +57,8 @@ const Login: React.FC = () => {
                             <PasswordInput password={password} handlePasswordChange={handlePasswordChange} />
                         </div>
                         <div className="flex flex-col justify-center items-center ">
-                            <button className=" text-grayText-700 font-semibold font-inter text-lg w-64 bg-text-lighter  rounded  p-2" type="submit">LOGIN</button>
-                            <h3 className="pt-3 text-text-light">Esqueceu a senha? <Link to="/cadastro" className=" text-icons">Nova senha</Link></h3>
+                            <button className=" text-black font-semibold font-inter text-lg w-64 bg-light-200  rounded  p-2" type="submit">LOGIN</button>
+                            <h3 className="pt-3 text-light-400">Esqueceu a senha? <Link to="/cadastro" className=" text-orange-500">Nova senha</Link></h3>
                         </div>
                     </form>
                 </div>
