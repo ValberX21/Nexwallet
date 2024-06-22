@@ -5,6 +5,17 @@ interface LoginData {
 
 interface AuthResponse {
   token: string;
+  isSuccess: boolean;
+  result: {
+    iD_USUARIO: number;
+    nome: string;
+    sobrE_NOME: string;
+    senha: string;
+    email: string;
+    saldo: number;
+  };
+  displayMessage: string;
+  errorMessage: string[] | null; // Ajuste para refletir corretamente
 }
 
 export const loginUser = async (loginData: LoginData): Promise<string | null> => {
@@ -30,8 +41,6 @@ export const loginUser = async (loginData: LoginData): Promise<string | null> =>
       }
     });
 
-    console.log('Resposta recebida:', response); // Log para depuração
-
     if (!response.ok) {
       const errorData = await response.json();
       console.error('Erro na resposta do servidor:', errorData);
@@ -40,7 +49,18 @@ export const loginUser = async (loginData: LoginData): Promise<string | null> =>
 
     const result: AuthResponse = await response.json();
     console.log('Resultado do login:', result); // Log para depuração
+
+    if (!result.isSuccess) {
+      console.error('Erro no login:', result.displayMessage);
+      return null;
+    }
+
+    // Armazene o token e os dados do usuário no localStorage
     localStorage.setItem('token', result.token);
+    localStorage.setItem('nome', result.result.nome);
+    localStorage.setItem('sobrenome', result.result.sobrE_NOME);
+    localStorage.setItem('saldo', result.result.saldo.toString());
+
     return result.token;
   } catch (error) {
     console.error('Erro ao fazer login:', error);

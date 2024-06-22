@@ -5,6 +5,9 @@ export default function CreditCard() {
     const fullNumber = "1234 5678 9012 3456";
     const [displayedNumber, setDisplayedNumber] = useState("");
 
+    const nome = localStorage.getItem('nome') || 'Usuário';
+    const sobrenome = localStorage.getItem('sobrenome') || '';
+
     useEffect(() => {
         let index = 0;
         const interval = setInterval(() => {
@@ -25,7 +28,7 @@ export default function CreditCard() {
                             {displayedNumber}
                         </motion.div>
                         <div>
-                            <div className="text-light-200 font-semibold mt-2 font-mono">John Doe</div>
+                            <div className="text-light-200 font-semibold mt-2 font-mono">{`${nome} ${sobrenome}`}</div>
                             <div className="text-light-200 font-semibold  font-mono">12/25</div>
                         </div>
                     </div>
