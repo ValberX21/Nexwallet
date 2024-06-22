@@ -6,7 +6,7 @@ export default function OverviewCard() {
     return (
         <>
             <motion.div 
-                className="flex flex-col bg-[#262626] rounded-3xl shadow-xl w-44 ml-4"
+                className="flex flex-col bg-[#262626] rounded-3xl shadow-card w-44 ml-4"
                 whileTap={{ scale: 0.95 }}
             >
                 <div className="p-4">

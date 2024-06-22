@@ -9,12 +9,13 @@ const PasswordInput: React.FC<PasswordInputProps> = ({ password, handlePasswordC
   return (
     <div className="p-3">
       <div className="uk-inline">
-      <span className="uk-form-icon" style={{ color: '#f97316' }} uk-icon="icon: lock"></span>
+        <span className="uk-form-icon" style={{ color: '#f97316' }} uk-icon="icon: lock"></span>
         <input
-          className="uk-input border-grayText-500 rounded w-64 focus:border-orangeGrid-500 text-grayText-200" 
+          className="uk-input border-light-500 rounded w-64 focus:border-orange-500 text-light-400"
           placeholder="Senha"
           type="password"
           id="password"
+          name="password"  // <-- Certifique-se de que o name é "password"
           value={password}
           onChange={handlePasswordChange}
           required

@@ -8,6 +8,7 @@ import HomeCashModal from '../Components/Home/HomeCashModal.tsx';
 import OverviewCard from '../Components/Home/Cards/OverviewCard.tsx';
 import GraphCard from '../Components/Home/Cards/GraphCard.tsx';
 import TinyBarChart from '../Components/Graphs/TinyBarChart.tsx';
+import CreditCard from '../Components/Home/Cards/CreditCard.tsx';
 
 
 export default function Home() {
@@ -24,11 +25,13 @@ export default function Home() {
                         <HomeCardFunction />
 
                         </div>
+                        <div className="">
+                            <CreditCard />
+                        </div>
                         <div className="pt-5 px-2 flex">
                             <OverviewCard />
                             <GraphCard />
                         </div>
-                            <TinyBarChart />
 
 
                 

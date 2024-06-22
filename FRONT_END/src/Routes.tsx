@@ -1,20 +1,22 @@
 import { Route, BrowserRouter, Routes } from "react-router-dom"; 
-import Welcome from "./Welcome/welcome.tsx.tsx";
-import Login from "./Auth/Login/login.tsx"
+import Welcome from "./Welcome/welcome.tsx";
+import Login from "./Auth/Login/login.tsx";
 import Register from "./Auth/Register/register.tsx";
-import Home from "./Home/home.tsx"
+import Home from "./Home/home.tsx";
 import ErrorScreen from "./ErrorScreen/ErrorScreen.tsx";
 
 const AppRoutes = () => {
-    return(
+    return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Home />} />
+                <Route path="/" element={<Welcome />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
+                <Route path="/home" element={<Home />} />
+                <Route path="*" element={<ErrorScreen />} />
             </Routes>
         </BrowserRouter>
     );
- };
- 
- export default AppRoutes;
+};
+
+export default AppRoutes;
