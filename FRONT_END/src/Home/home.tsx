@@ -1,13 +1,10 @@
 import { Link } from 'react-router-dom';
-import HomeProfile from '../Components/Home/HomeProfile';
-import { UserPlusIcon, CubeTransparentIcon} from '@heroicons/react/24/outline';
-import credit from '../assets/credit.png'
+
 import HomeCardFunction from '../Components/Home/HomeCardFunctions';
 import HomeHeader from '../Components/Home/HomeHeader.tsx';
 import HomeCashModal from '../Components/Home/HomeCashModal.tsx';
 import OverviewCard from '../Components/Home/Cards/OverviewCard.tsx';
 import GraphCard from '../Components/Home/Cards/GraphCard.tsx';
-import TinyBarChart from '../Components/Graphs/TinyBarChart.tsx';
 import CreditCard from '../Components/Home/Cards/CreditCard.tsx';
 
 
@@ -28,7 +25,7 @@ export default function Home() {
                         <div className="">
                             <CreditCard />
                         </div>
-                        <div className="pt-5 px-2 flex">
+                        <div className="pt-5 px-2 flex md:justify-center">
                             <OverviewCard />
                             <GraphCard />
                         </div>

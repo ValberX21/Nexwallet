@@ -1,18 +1,16 @@
 import React from 'react';
-import { UserPlusIcon } from '@heroicons/react/24/outline';
+import { UserPlusIcon, ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
 import Aang from '../../assets/aang.jpg';
 
 export default function HomeHeader() {
-  // Recupere os dados do usuário do localStorage
   const nome = localStorage.getItem('nome') || 'Usuário';
   const sobrenome = localStorage.getItem('sobrenome') || '';
 
   return (
     <>
       <div className="pt-5 flex justify-around items-center">
-
         <div className=" bg-dark-200 rounded-full h-12 w-12 flex justify-center items-center">
-          <UserPlusIcon className="h-6 w-6 text-orange-400" />
+          <ArrowTopRightOnSquareIcon className="h-6 w-6 text-orange-400" />
         </div>
         <div className="bg-dark-200 rounded-full h-12 w-12 flex justify-center items-center">
           <UserPlusIcon className="h-6 w-6 text-orange-400" />

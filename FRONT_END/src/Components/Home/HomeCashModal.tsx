@@ -7,8 +7,8 @@ const HomeCashModal: React.FC = () => {
 
   return (
     <>
-      <div className="bg-dark-200 font-inter">
-        <div className="p-5">
+      <div className="bg-dark-200 font-inter ">
+        <div className="p-5 md:w-[60%] md:ml-[25%]">
           <div className="flex items-center justify-between">
             <h2 className="font-normal text-lg text-light-300">Conta:</h2>
             <div className="flex">

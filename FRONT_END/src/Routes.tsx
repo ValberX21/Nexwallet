@@ -51,7 +51,7 @@ const AppRoutes: React.FC = () => {
     <BrowserRouter>
       <Suspense fallback={<LoadingScreen setLoading={setLoading} />}>
         <Routes>
-          <Route path="/" element={<PageTransition><Welcome /></PageTransition>} />
+          <Route path="/" element={<PageTransition><Home /></PageTransition>} />
           <Route path="/login" element={<PageTransition><Login /></PageTransition>} />
           <Route path="/register" element={<PageTransition><Register /></PageTransition>} />
           <Route path="/home" element={<PageTransition><Home /></PageTransition>} />
