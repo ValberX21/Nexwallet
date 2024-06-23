@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../../styles/index.css'
+import '../../styles/index.css';
 import unfillBox from '../../assets/unfillBox.png';
 import { useRegisterEvents } from '../../events/formEvents/registerEvents';
-
+import { validateEmail, validateCPF, validateName, validatePassword, validatePasswordConfirmation, formatCPF } from '../../validations/registerValidations';
+import Login from '../Login/login';
 
 const Register: React.FC = () => {
     const { formData, errors, handleInputChange, handleSubmit } = useRegisterEvents();
     const [showSecondForm, setShowSecondForm] = useState(false);
 
     const toggleSecondForm = () => {
-        const isValid = formData.firstName.trim() !== '' && formData.lastName.trim() !== '' && formData.cpf.trim() !== '' && formData.email.trim() !== '' && formData.password.trim() !== '' && formData.confirmPassword.trim() !== '' && Object.values(errors).every(error => error === '');
+        const isValid = validateForm();
         if (isValid) {
             setShowSecondForm(!showSecondForm);
             document.getElementById('secondForm')?.scrollIntoView({ behavior: 'smooth' });
@@ -19,17 +20,22 @@ const Register: React.FC = () => {
         }
     };
 
-    const formatCPF = (value: string) => {
-        return value
-            .replace(/\D/g, '')
-            .replace(/(\d{3})(\d)/, '$1.$2')
-            .replace(/(\d{3})(\d)/, '$1.$2')
-            .replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+    const validateForm = (): boolean => {
+        const newErrors: { [key: string]: string } = {};
+
+        newErrors.firstName = validateName(formData.firstName);
+        newErrors.lastName = validateName(formData.lastName);
+        newErrors.cpf = validateCPF(formData.cpf);
+        newErrors.email = validateEmail(formData.email);
+        newErrors.password = validatePassword(formData.password);
+        newErrors.confirmPassword = validatePasswordConfirmation(formData.password, formData.confirmPassword);
+
+        return Object.values(newErrors).every(error => error === '');
     };
 
     return (
         <div className="bg-[#171717] h-screen w-screen flex justify-center items-center flex-col font-inter">
-            <img src={unfillBox} alt="Descrição da imagem" className=" w-[80%] md:w-[15%]" />
+            <img src={unfillBox} alt="Descrição da imagem" className="w-[80%] md:w-[15%]" />
             <div className="p-6 w-80 text-light-300 flex flex-col justify-center items-center">
                 <form onSubmit={handleSubmit}>
                     {!showSecondForm && (
@@ -72,15 +78,15 @@ const Register: React.FC = () => {
                                     name="cpf"
                                     className="uk-input border-light-500 rounded w-64 focus:border-orange-400 text-light-300"
                                     value={formatCPF(formData.cpf)}
-                                    onChange={e => handleInputChange(e)}
+                                    onChange={handleInputChange}
                                     required
                                 />
                                 {errors.cpf && <p className="text-red-500">{errors.cpf}</p>}
                             </div>
                             <div className="py-3">
                                 <input
-                                        className="uk-input border-light-500 rounded w-64 focus:border-orange-400 text-light-300"
-                                        placeholder="E-mail:"
+                                    className="uk-input border-light-500 rounded w-64 focus:border-orange-400 text-light-300"
+                                    placeholder="E-mail:"
                                     type="email"
                                     id="email"
                                     name="email"
@@ -92,8 +98,8 @@ const Register: React.FC = () => {
                             </div>
                             <div className="py-3">
                                 <input
-                                        className="uk-input border-light-500 rounded w-64 focus:border-orange-400 text-light-300"
-                                        placeholder="Nova senha:"
+                                    className="uk-input border-light-500 rounded w-64 focus:border-orange-400 text-light-300"
+                                    placeholder="Nova senha:"
                                     type="password"
                                     id="password"
                                     name="password"
@@ -117,8 +123,16 @@ const Register: React.FC = () => {
                                 {errors.confirmPassword && <p className="text-red-500">{errors.confirmPassword}</p>}
                             </div>
                             <div className="flex flex-col justify-center items-center pt-5">
-                                <button className="text-black font-semibold font-inter text-lg w-64 bg-light-200 rounded p-2" type="button" onClick={toggleSecondForm}>CONTINUAR</button>
-                                <h3 className="pt-3 text-text-light">Já é cadastrado? <Link to="/cadastro" className=" text-orange-500">Faça login</Link></h3>
+                                <button
+                                    className="text-black font-semibold font-inter text-lg w-64 bg-light-200 rounded p-2"
+                                    type="button"
+                                    onClick={toggleSecondForm}
+                                >
+                                    CONTINUAR
+                                </button>
+                                <h3 className="pt-3 text-text-light">
+                                    Já é cadastrado? <Link to="/login" className="text-orange-500">Faça login</Link>
+                                </h3>
                             </div>
                         </>
                     )}
@@ -127,8 +141,8 @@ const Register: React.FC = () => {
                         <div className="teste" id="secondForm">
                             <div className="py-3">
                                 <input
-                                        className="uk-input border-light-500 rounded w-64 focus:border-orange-400 text-light-300"
-                                        placeholder="CEP"
+                                    className="uk-input border-light-500 rounded w-64 focus:border-orange-400 text-light-300"
+                                    placeholder="CEP"
                                     type="text"
                                     id="cep"
                                     name="cep"
@@ -140,8 +154,8 @@ const Register: React.FC = () => {
                             </div>
                             <div className="py-3">
                                 <input
-                                        className="uk-input border-light-500 rounded w-64 focus:border-orange-400 text-light-300"
-                                        placeholder="Rua"
+                                    className="uk-input border-light-500 rounded w-64 focus:border-orange-400 text-light-300"
+                                    placeholder="Rua"
                                     type="text"
                                     id="street"
                                     name="street"
@@ -151,8 +165,8 @@ const Register: React.FC = () => {
                             </div>
                             <div className="py-3">
                                 <input
-                                        className="uk-input border-light-500 rounded w-64 focus:border-orange-400 text-light-300"
-                                        placeholder="Cidade"
+                                    className="uk-input border-light-500 rounded w-64 focus:border-orange-400 text-light-300"
+                                    placeholder="Cidade"
                                     type="text"
                                     id="city"
                                     name="city"
@@ -161,8 +175,15 @@ const Register: React.FC = () => {
                                 />
                             </div>
                             <div className="flex flex-col justify-center items-center pt-5">
-                                <button className="text-black font-semibold font-inter text-lg w-64 bg-light-200 rounded p-2" type="submit">CRIAR CONTA</button>
-                                <h3 className="pt-3 text-light-200">Já é cadastrado? <Link to="/cadastro" className=" text-icons">Faça login</Link></h3>
+                                <button
+                                    className="text-black font-semibold font-inter text-lg w-64 bg-light-200 rounded p-2"
+                                    type="submit"
+                                >
+                                    CRIAR CONTA
+                                </button>
+                                <h3 className="pt-3 text-light-200">
+                                    Já é cadastrado? <Link to="/login" className="text-orange-500">Faça login</Link>
+                                </h3>
                             </div>
                         </div>
                     )}

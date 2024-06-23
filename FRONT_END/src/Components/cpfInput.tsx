@@ -17,6 +17,7 @@ const CpfInput: React.FC<CpfInputProps> = ({ cpf, handleCpfChange }) => {
           id="cpf"
           name="cpf"  // <-- Certifique-se de que o name é "cpf"
           value={cpf}
+          maxLength={11}
           onChange={handleCpfChange}
           required
           aria-label="Not clickable icon"

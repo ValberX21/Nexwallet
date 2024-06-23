@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("bankinapi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+89cb5d90e0c9191c9f5d4b0d37d1deacfcbef1e3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5bbd8ea56e3223e258e0600b45eb0c7f8c746312")]
 [assembly: System.Reflection.AssemblyProductAttribute("bankinapi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("bankinapi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

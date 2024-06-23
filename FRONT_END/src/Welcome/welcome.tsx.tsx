@@ -1,35 +1,63 @@
 import { Link } from 'react-router-dom';
-import wifi from '../assets/testHome.png';
-
-
+import { motion } from 'framer-motion';
+import newBackground from '../assets/testePerson.jpg';
+import logo from '../assets/nexLogo.png'; // Atualize este caminho conforme necessário
 
 const Home = () => {
   return (
-    <div className="bg-custom-gradient bg-cover bg-center">
-    <div className=" bg-darkBackground h-screen w-screen flex justify-center items-center flex-col p-10">
-      {/* <img src={humanImg} /> */}
-      <div className=" flex items-center justify-center w-[100%] p-2 ">
-        <h1 className=" text-5xl text-left font-bold w-full  tracking-wide text-light-200 md:text-center ">Ser <a className=" text-orange-500 text-icons">NEX</a> é liderar o caminho</h1>
+    <div className="relative bg-cover bg-center h-screen w-screen" style={{ backgroundImage: `url(${newBackground})` }}>
+      <div className="absolute inset-0 bg-black opacity-50"></div>
+      <div className="relative z-10 h-full w-full p-10 flex flex-col justify-center items-center md:items-start md:justify-start">
+        <motion.img 
+          src={logo} 
+          alt="NEX Logo" 
+          className="w-20 h-20 mb-5 md:mb-0 md:absolute md:top-10 md:left-10" 
+          initial={{ opacity: 0, y: -20 }} 
+          animate={{ opacity: 1, y: 0 }} 
+          transition={{ duration: 1 }}
+        />
+        <motion.div 
+          className="flex flex-col justify-center items-center text-center mt-20 md:mt-0 w-full"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1 }}
+        >
+          <motion.h1 
+            className="text-6xl font-bold tracking-wide text-white mb-4"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.5 }}
+          >
+            Bem-vindo à <span className="text-orange-500">NEX</span>
+          </motion.h1>
+          <motion.p 
+            className="text-2xl text-light-300 mb-8"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 1 }}
+          >
+            Simplifique sua <span className="text-orange-500">vida financeira</span> com soluções inovadoras.
+          </motion.p>
+          <motion.div 
+            className="flex flex-col md:flex-row md:space-x-5 w-full md:justify-center"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 1.5 }}
+          >
+            <Link to="/register">
+              <button className="text-black font-semibold text-lg w-full md:w-40 bg-light-200 rounded p-3 mb-3 md:mb-0 hover:bg-light-300 transition duration-300 shadow-lg hover:shadow-xl">
+                Cadastre-se
+              </button>
+            </Link>
+            <Link to="/login">
+              <button className="text-orange-500 font-semibold text-lg w-full md:w-40 border border-orange-500 bg-transparent rounded p-3 hover:bg-orange-500 hover:text-white transition duration-300 shadow-lg hover:shadow-xl">
+                Entrar
+              </button>
+            </Link>
+          </motion.div>
+        </motion.div>
       </div>
-      <img src={wifi} alt="Descrição da imagem" className='loginImg md:w-[30%]' />
-
-      <div className="  flex items-center justify-center flex-col">
-        <h2 className=" text-xl text-light-300 pb-10  ">Descomplique sua <a className="text-icons">vida financeira.</a></h2>
-        <div className="flex flex-col md:flex-row md:justify-between md:items-center">
-        <Link to="/register">
-          <button className=" text-text-black font-semibold font-inter text-lg w-80 bg-light-200 rounded md:mr-10  p-3">QUERO SER NEX</button>
-        </Link>
-        <Link to="/login">
-          <button className=" text-orange-500 font-semibold font-inter text-lg w-80 border border-orange-500 bg-dark-50  rounded  p-3 mt-5 md:mt-0">JÁ TENHO CONTA</button>
-        </Link>
-        </div>
-
-      </div>
-
-
     </div>
-    </div>
-
   );
 };
 

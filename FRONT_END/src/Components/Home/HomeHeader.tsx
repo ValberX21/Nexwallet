@@ -10,6 +10,7 @@ export default function HomeHeader() {
   return (
     <>
       <div className="pt-5 flex justify-around items-center">
+
         <div className=" bg-dark-200 rounded-full h-12 w-12 flex justify-center items-center">
           <UserPlusIcon className="h-6 w-6 text-orange-400" />
         </div>
