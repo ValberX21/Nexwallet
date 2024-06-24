@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Suspense, lazy } from 'react';
 import { motion } from 'framer-motion';
 import LoadingScreen from './LoadingScreen'; // Atualize o caminho conforme necessário
 
@@ -21,8 +20,7 @@ const PageTransition: React.FC<{ children: React.ReactNode }> = ({ children }) =
   </motion.div>
 );
 
-// Preload the components
-const preloadComponent = (component: () => Promise<{ default: React.ComponentType<any> }>) => {
+const preloadComponent = (component: () => Promise<{ default: React.ComponentType<any> }>): void => {
   component().then();
 };
 
@@ -51,7 +49,7 @@ const AppRoutes: React.FC = () => {
     <BrowserRouter>
       <Suspense fallback={<LoadingScreen setLoading={setLoading} />}>
         <Routes>
-          <Route path="/" element={<PageTransition><Home /></PageTransition>} />
+          <Route path="/" element={<PageTransition><Welcome /></PageTransition>} />
           <Route path="/login" element={<PageTransition><Login /></PageTransition>} />
           <Route path="/register" element={<PageTransition><Register /></PageTransition>} />
           <Route path="/home" element={<PageTransition><Home /></PageTransition>} />

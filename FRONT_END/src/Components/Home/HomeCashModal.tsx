@@ -2,7 +2,6 @@ import React from 'react';
 import { EyeIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 
 const HomeCashModal: React.FC = () => {
-  // Recupere o saldo do usuário do localStorage
   const saldo = localStorage.getItem('saldo') || '0.00';
 
   return (

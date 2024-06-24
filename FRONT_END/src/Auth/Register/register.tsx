@@ -4,7 +4,6 @@ import '../../styles/index.css';
 import unfillBox from '../../assets/unfillBox.png';
 import { useRegisterEvents } from '../../events/formEvents/registerEvents';
 import { validateEmail, validateCPF, validateName, validatePassword, validatePasswordConfirmation, formatCPF } from '../../validations/registerValidations';
-import Login from '../Login/login';
 
 const Register: React.FC = () => {
     const { formData, errors, handleInputChange, handleSubmit } = useRegisterEvents();

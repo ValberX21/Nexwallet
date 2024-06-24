@@ -14,7 +14,7 @@ const iconCards: IconCard[] = [
   { text: 'Depósito', icon: <TbCreditCardPay  className="text-orange-500"/>, link: '/pay' },
   { text: 'Transferência', icon: <TbCreditCardRefund className="text-orange-500" />, link: '/refund' },
   { text: 'Pix', icon: <TbCreditCard className="text-orange-500"  />, link: '/pix' },
-  { text: 'Minha conta', icon: <HiOutlineCog  className="text-orange-500" />, link: '/other' }, // Ajuste conforme necessário para o quarto ícone
+  { text: 'Minha conta', icon: <HiOutlineCog  className="text-orange-500" />, link: '/other' }, 
 ];
 
 export default function HomeCardFunction() {

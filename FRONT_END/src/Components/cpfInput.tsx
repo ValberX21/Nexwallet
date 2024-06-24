@@ -9,13 +9,13 @@ const CpfInput: React.FC<CpfInputProps> = ({ cpf, handleCpfChange }) => {
   return (
     <div className="p-3">
       <div className="uk-inline">
-        <span className="uk-form-icon text-[#f97316]" style={{ color: '#f97316' }} uk-icon="icon: user"></span>
+        <span className="uk-form-icon text-[#f97316]" style={{ color: '#f97316' }} data-uk-icon="icon: user"></span>
         <input
-          className="uk-input  border-light-500 rounded w-64 focus:border-orange-500 text-light-400"
+          className="uk-input border-light-500 rounded w-64 focus:border-orange-500 text-light-400"
           placeholder="CPF"
           type="text"
           id="cpf"
-          name="cpf"  // <-- Certifique-se de que o name é "cpf"
+          name="cpf"
           value={cpf}
           maxLength={11}
           onChange={handleCpfChange}

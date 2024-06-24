@@ -1,11 +1,11 @@
-import React, { PureComponent } from 'react';
+import  { PureComponent } from 'react';
 import { BarChart, Bar, ResponsiveContainer, XAxis, Tooltip, Legend } from 'recharts';
 
 const data = [
   {
     name: 'Fevereiro',
     entrada: 4000,
-    saida: 0, // Inicialmente a saída é zero
+    saida: 0, 
   },
   {
     name: 'Março',
@@ -33,11 +33,11 @@ interface TinyBarChartState {
   showSaida: boolean;
 }
 
-export default class TinyBarChart extends PureComponent<{}, TinyBarChartState> {
-  constructor(props: {}) {
+export default class TinyBarChart extends PureComponent<object, TinyBarChartState> {
+  constructor(props: object) {
     super(props);
     this.state = {
-      showSaida: false, // Inicialmente não mostra a série de saída
+      showSaida: false, 
     };
   }
 

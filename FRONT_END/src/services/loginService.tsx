@@ -15,25 +15,25 @@ interface AuthResponse {
     saldo: number;
   };
   displayMessage: string;
-  errorMessage: string[] | null; // Ajuste para refletir corretamente
+  errorMessage: string[] | null; 
 }
 
 export const loginUser = async (loginData: LoginData): Promise<string | null> => {
   try {
-    console.log('Enviando dados de login:', loginData); // Log para depuração
+    console.log('Enviando dados de login:', loginData); 
 
-    const response = await fetch('http://localhost:5086/GenerateToken/autentica', {
+    const response = await fetch('bankinapi20240623181422.azurewebsites.net/GenerateToken/autentica', {
       method: 'POST',
       body: JSON.stringify({
         iD_USUARIO: 0,
-        nome: "", // Adicione um valor adequado ou remova se não for necessário
-        sobrE_NOME: "", // Adicione um valor adequado ou remova se não for necessário
-        senha: loginData.password, // Use diretamente a senha fornecida em loginData
-        email: "", // Adicione um valor adequado ou remova se não for necessário
+        nome: "", 
+        sobrE_NOME: "", 
+        senha: loginData.password, 
+        email: "", 
         saldo: 0,
         token: "",
         cpf: loginData.cpf,
-        usu: loginData.cpf // Inclui o campo `usu`
+        usu: loginData.cpf 
       }),
       headers: {
         'Accept': 'application/json',

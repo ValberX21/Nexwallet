@@ -37,7 +37,7 @@ export const useRegisterEvents = () => {
         setFormData((prevFormData) => {
             const newFormData = { ...prevFormData, [name]: inputValue };
 
-            let newErrors = { ...errors };
+            const newErrors = { ...errors };
 
             if (name === 'email') {
                 newErrors.email = validateEmail(value);

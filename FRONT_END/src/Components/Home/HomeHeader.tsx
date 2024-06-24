@@ -1,4 +1,3 @@
-import React from 'react';
 import { UserPlusIcon, ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
 import Aang from '../../assets/aang.jpg';
 

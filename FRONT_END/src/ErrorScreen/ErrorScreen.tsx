@@ -1,5 +1,4 @@
 // /src/ErrorScreen/ErrorScreen.tsx
-
 import React from 'react';
 import Meteors from "../Components/magicui/meteors";
 import Satalite from '../assets/Satalite.png'

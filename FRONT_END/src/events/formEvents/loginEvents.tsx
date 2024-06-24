@@ -23,7 +23,7 @@ export const useLoginEvents = () => {
       setFormData((prevFormData) => {
         const newFormData = { ...prevFormData, [name]: value };
   
-        let newErrors = { ...errors };
+        const newErrors = { ...errors };
   
         if (name === 'cpf') {
           newErrors.cpf = validateCPF(value);
