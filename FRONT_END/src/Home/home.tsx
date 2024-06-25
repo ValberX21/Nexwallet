@@ -10,7 +10,7 @@ import CreditCard from '../Components/Home/Cards/CreditCard.tsx';
 export default function Home() {
     return (
         <>
-            <div className=" bg-darkBackground h-screen text-white font-inter">
+            <div className=" bg-darkBackground  text-white font-inter p-5">
                 <div className="p-5">
                     <HomeHeader />
                 </div>
@@ -24,7 +24,7 @@ export default function Home() {
                 <div className="">
                     <CreditCard />
                 </div>
-                <div className="pt-5 px-2 flex md:justify-center">
+                <div className="pt-5 px-2 flex md:justify-center pb-5">
                     <OverviewCard />
                     <GraphCard />
                 </div>

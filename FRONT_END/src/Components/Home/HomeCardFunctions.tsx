@@ -1,8 +1,6 @@
 import React from 'react';
-import { TbCreditCardPay, TbCreditCardRefund, TbCreditCard   } from "react-icons/tb";
+import { TbCreditCardPay, TbCreditCardRefund, TbCreditCard } from "react-icons/tb";
 import { HiOutlineCog } from "react-icons/hi";
-
-
 
 interface IconCard {
   text: string;
@@ -11,10 +9,10 @@ interface IconCard {
 }
 
 const iconCards: IconCard[] = [
-  { text: 'Depósito', icon: <TbCreditCardPay  className="text-orange-500"/>, link: '/pay' },
-  { text: 'Transferência', icon: <TbCreditCardRefund className="text-orange-500" />, link: '/refund' },
-  { text: 'Pix', icon: <TbCreditCard className="text-orange-500"  />, link: '/pix' },
-  { text: 'Minha conta', icon: <HiOutlineCog  className="text-orange-500" />, link: '/other' }, 
+  { text: 'Depósito', icon: <TbCreditCardPay className="text-orange-500" />, link: '/maintenance' },
+  { text: 'Transferência', icon: <TbCreditCardRefund className="text-orange-500" />, link: '/maintenance' },
+  { text: 'Pix', icon: <TbCreditCard className="text-orange-500" />, link: '/maintenance' },
+  { text: 'Minha conta', icon: <HiOutlineCog className="text-orange-500" />, link: '/maintenance' },
 ];
 
 export default function HomeCardFunction() {
