@@ -9,7 +9,7 @@ const Login: React.FC = () => {
   const { formData, errors, handleInputChange, handleSubmit } = useLoginEvents();
 
   return (
-    <div className="bg-darkBackground h-screen w-screen flex justify-center items-center flex-col font-inter">
+    <div className="bg-darkBackground  flex justify-center items-center flex-col font-inter">
       <img src={fillBox} alt="Descrição da imagem" className='loginImg md:w-[20%]' />
 
       <div className="flex items-center justify-center flex-col">
