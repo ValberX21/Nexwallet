@@ -50,7 +50,7 @@ const Register: React.FC = () => {
     };
 
     return (
-        <div className="bg-[#171717] flex h-screen justify-center items-center flex-col font-inter">
+        <div className="bg-[#171717] flex  justify-center items-center flex-col font-inter">
             <img src={unfillBox} alt="Descrição da imagem" className="w-[80%] md:w-[14%]" />
             <div className="p-6 w-80 text-light-300 flex flex-col justify-center items-center">
                 <form onSubmit={handleFormSubmit}>
@@ -197,7 +197,7 @@ const Register: React.FC = () => {
                                 >
                                     CRIAR CONTA
                                 </button>
-                                <h3 className="pt-3 text-light-200">
+                                <h3 className="pt-10  text-light-200">
                                     Já é cadastrado? <Link to="/login" className="text-orange-500">Faça login</Link>
                                 </h3>
                             </div>
