@@ -1,10 +1,34 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { validateEmail, validateCPF, validateName, validatePassword, validatePasswordConfirmation, fetchAddressByCep } from '../../validations/registerValidations';
 import { registerUser } from '../../services/registerUser';
 
+interface FormData {
+  firstName: string;
+  lastName: string;
+  cpf: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+  cep: string;
+  street: string;
+  city: string;
+}
+
+interface Errors {
+  firstName: string;
+  lastName: string;
+  cpf: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+  cep: string;
+  street: string;
+  city: string;
+}
+
 export const useRegisterEvents = () => {
-    const [formData, setFormData] = useState({
+    const [formData, setFormData] = useState<FormData>({
         firstName: '',
         lastName: '',
         cpf: '',
@@ -16,7 +40,7 @@ export const useRegisterEvents = () => {
         city: '',
     });
 
-    const [errors, setErrors] = useState({
+    const [errors, setErrors] = useState<Errors>({
         firstName: '',
         lastName: '',
         cpf: '',
@@ -27,8 +51,6 @@ export const useRegisterEvents = () => {
         street: '',
         city: '',
     });
-
-    const [formComplete, setFormComplete] = useState(false);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value, type, checked } = e.target;
@@ -76,23 +98,33 @@ export const useRegisterEvents = () => {
         e.preventDefault();
 
         if (Object.values(errors).every(error => error === '')) {
-            setFormComplete(true);
-
             try {
+                // Remova a máscara do CPF antes de enviar
+                const cleanCpf = formData.cpf.replace(/\D/g, '');
+
                 // Hashing da senha usando SHA-256
                 const hashedPassword = await sha256(formData.password);
-                await registerUser({ ...formData, password: hashedPassword });
-                toast.success('Cadastro realizado com sucesso!');
+
+                const response = await registerUser({ ...formData, cpf: cleanCpf, password: hashedPassword });
+                if (response && response.message === "Sucesso") {
+                    toast.success('Cadastro realizado com sucesso!');
+                    return true;
+                } else {
+                    toast.error('Erro ao cadastrar usuário. Por favor, verifique seus dados e tente novamente.');
+                    return false;
+                }
             } catch (error) {
                 toast.error('Erro ao cadastrar usuário. Por favor, verifique seus dados e tente novamente.');
                 console.error('Erro ao cadastrar usuário:', error);
+                return false;
             }
         } else {
             toast.error('Por favor, corrija os erros no formulário antes de continuar.');
+            return false;
         }
     };
 
-    return { formData, errors, formComplete, handleInputChange, handleSubmit };
+    return { formData, errors, handleInputChange, handleSubmit };
 };
 
 // Função para hash de senha usando SHA-256

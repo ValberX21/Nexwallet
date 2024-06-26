@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../../styles/index.css';
 import unfillBox from '../../assets/unfillBox.png';
 import { useRegisterEvents } from '../../events/formEvents/registerEvents';
@@ -8,6 +8,7 @@ import { validateEmail, validateCPF, validateName, validatePassword, validatePas
 const Register: React.FC = () => {
     const { formData, errors, handleInputChange, handleSubmit } = useRegisterEvents();
     const [showSecondForm, setShowSecondForm] = useState(false);
+    const navigate = useNavigate();
 
     const toggleSecondForm = () => {
         const isValid = validateForm();
@@ -20,23 +21,39 @@ const Register: React.FC = () => {
     };
 
     const validateForm = (): boolean => {
-        const newErrors: { [key: string]: string } = {};
-
-        newErrors.firstName = validateName(formData.firstName);
-        newErrors.lastName = validateName(formData.lastName);
-        newErrors.cpf = validateCPF(formData.cpf);
-        newErrors.email = validateEmail(formData.email);
-        newErrors.password = validatePassword(formData.password);
-        newErrors.confirmPassword = validatePasswordConfirmation(formData.password, formData.confirmPassword);
+        const newErrors: { [key: string]: string } = {
+            firstName: validateName(formData.firstName),
+            lastName: validateName(formData.lastName),
+            cpf: validateCPF(formData.cpf),
+            email: validateEmail(formData.email),
+            password: validatePassword(formData.password),
+            confirmPassword: validatePasswordConfirmation(formData.password, formData.confirmPassword),
+            cep: '',
+            street: '',
+            city: '',
+        };
 
         return Object.values(newErrors).every(error => error === '');
     };
 
+    const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const isValid = validateForm();
+        if (isValid) {
+            const result = await handleSubmit(e);
+            if (result) {
+                navigate('/login');
+            }
+        } else {
+            alert('Por favor, corrija os erros no formulário antes de continuar.');
+        }
+    };
+
     return (
-        <div className="bg-[#171717] h-screen w-screen flex justify-center items-center flex-col font-inter">
-            <img src={unfillBox} alt="Descrição da imagem" className="w-[80%] md:w-[15%]" />
+        <div className="bg-[#171717] flex h-screen justify-center items-center flex-col font-inter">
+            <img src={unfillBox} alt="Descrição da imagem" className="w-[80%] md:w-[14%]" />
             <div className="p-6 w-80 text-light-300 flex flex-col justify-center items-center">
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleFormSubmit}>
                     {!showSecondForm && (
                         <>
                             <div className="py-3">
@@ -129,7 +146,7 @@ const Register: React.FC = () => {
                                 >
                                     CONTINUAR
                                 </button>
-                                <h3 className="pt-3 text-text-light">
+                                <h3 className="pt-1 text-text-light">
                                     Já é cadastrado? <Link to="/login" className="text-orange-500">Faça login</Link>
                                 </h3>
                             </div>

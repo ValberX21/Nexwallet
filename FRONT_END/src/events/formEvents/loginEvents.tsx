@@ -43,11 +43,14 @@ export const useLoginEvents = () => {
       try {
         console.log('Formulário enviado com os dados:', formData); // Log para depuração
 
+        // Remova a máscara do CPF antes de enviar
+        const cleanCpf = removeCpfMask(formData.cpf);
+
         // Hashing da senha usando SHA-256
         const hashedPassword = await sha256(formData.password);
 
-        // Chame a função de login com a senha hash
-        const token = await loginUser({ ...formData, password: hashedPassword });
+        // Chame a função de login com o CPF limpo e a senha hash
+        const token = await loginUser({ ...formData, cpf: cleanCpf, password: hashedPassword });
 
         if (token) {
           toast.success('Login realizado com sucesso!');
@@ -99,4 +102,9 @@ function formatCPF(cpf: string) {
   }
 
   return cpf;
+}
+
+// Função para remover a máscara do CPF
+function removeCpfMask(cpf: string) {
+  return cpf.replace(/\D/g, '');
 }
