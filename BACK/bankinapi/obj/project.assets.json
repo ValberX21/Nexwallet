@@ -4095,11 +4095,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\DMBelem\\Nexwallet-6\\BACK\\bankinapi\\bankinapi.csproj",
+      "projectUniqueName": "C:\\Users\\DMBelem\\Nexwallet-7\\BACK\\bankinapi\\bankinapi.csproj",
       "projectName": "bankinapi",
-      "projectPath": "C:\\Users\\DMBelem\\Nexwallet-6\\BACK\\bankinapi\\bankinapi.csproj",
+      "projectPath": "C:\\Users\\DMBelem\\Nexwallet-7\\BACK\\bankinapi\\bankinapi.csproj",
       "packagesPath": "C:\\Users\\DMBelem\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\DMBelem\\Nexwallet-6\\BACK\\bankinapi\\obj\\",
+      "outputPath": "C:\\Users\\DMBelem\\Nexwallet-7\\BACK\\bankinapi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

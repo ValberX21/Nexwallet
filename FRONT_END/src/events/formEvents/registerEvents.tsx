@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { validateEmail, validateCPF, validateName, validatePassword, validatePasswordConfirmation, fetchAddressByCep } from '../../validations/registerValidations';
 import { registerUser } from '../../services/registerUser';
+import { useNavigate } from 'react-router-dom'; // Importar useNavigate
 
 interface FormData {
   firstName: string;
@@ -28,6 +29,7 @@ interface Errors {
 }
 
 export const useRegisterEvents = () => {
+    const navigate = useNavigate(); // Inicializar o useNavigate
     const [formData, setFormData] = useState<FormData>({
         firstName: '',
         lastName: '',
@@ -106,8 +108,9 @@ export const useRegisterEvents = () => {
                 const hashedPassword = await sha256(formData.password);
 
                 const response = await registerUser({ ...formData, cpf: cleanCpf, password: hashedPassword });
-                if (response && response.message === "Sucesso") {
+                if (response && response.success) { // Verificar a propriedade success
                     toast.success('Cadastro realizado com sucesso!');
+                    navigate('/login'); // Redirecionar para a tela de login após sucesso
                     return true;
                 } else {
                     toast.error('Erro ao cadastrar usuário. Por favor, verifique seus dados e tente novamente.');

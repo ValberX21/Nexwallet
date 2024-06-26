@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ol6NQjU0fnDuOQ6sdsp41GIXjdJS66Z4B9lVubvg6IfrUdTJDbakPWHzNbtoLEtSPJUw1sVwkdDtZI4IFBGMxw==",
+  "dgSpecHash": "wFVM/2PPygplYoC/lkctpB229U2wsz3piNBJBMjDjm+ITxVKCusg3prnm5RObcWy8rRyf6yIynYxCUaG6r9zEw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\DMBelem\\Nexwallet-6\\BACK\\bankinapi\\bankinapi.csproj",
+  "projectFilePath": "C:\\Users\\DMBelem\\Nexwallet-7\\BACK\\bankinapi\\bankinapi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\DMBelem\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\DMBelem\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
