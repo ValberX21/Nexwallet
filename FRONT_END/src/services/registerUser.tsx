@@ -16,7 +16,7 @@ export const registerUser = async (userData: UserData): Promise<RegisterUserResp
   try {
       console.log("Enviando dados para registro:", userData);
 
-      const response = await fetch('https://bankinapi20240623181422.azurewebsites.net/CadUsuario/adicionaNovoUsuario', {
+      const response = await fetch('https://localhost:44390/CadUsuario/adicionaNovoUsuario', {
           method: 'POST',
           body: JSON.stringify({
               iD_USUARIO: 0,

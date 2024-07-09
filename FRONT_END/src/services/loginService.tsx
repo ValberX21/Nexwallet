@@ -22,7 +22,7 @@ export const loginUser = async (loginData: LoginData): Promise<string | null> =>
   try {
     console.log('Enviando dados de login:', loginData);
 
-    const response = await fetch('https://bankinapi20240623181422.azurewebsites.net/GenerateToken/autentica', {
+    const response = await fetch('https://localhost:44390/GenerateToken/autentica', {
       method: 'POST',
       body: JSON.stringify({
         iD_USUARIO: 0,
