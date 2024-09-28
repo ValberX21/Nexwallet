@@ -1,14 +1,15 @@
+import React from 'react';
 import Button from '@mui/material/Button';
 
 interface CustomButtonProps {
-  buttonText: string; 
-  type: "button" | "submit" | "reset"; 
-
+  buttonText: string;
+  type: 'button' | 'submit' | 'reset';
 }
 
-const CustomButton: React.FC<CustomButtonProps> = ({ buttonText }) => {
+const CustomButton: React.FC<CustomButtonProps> = ({ buttonText, type }) => {
   return (
     <Button
+      type={type}
       variant="contained"
       sx={{
         width: '25vh',
@@ -17,7 +18,6 @@ const CustomButton: React.FC<CustomButtonProps> = ({ buttonText }) => {
         borderRadius: 2,
         fontWeight: 'bold',
         color: '#171717',
-
         height: 40,
         padding: '0 30px',
         '&:hover': {
@@ -25,7 +25,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({ buttonText }) => {
         },
       }}
     >
-     {buttonText}
+      {buttonText}
     </Button>
   );
 };

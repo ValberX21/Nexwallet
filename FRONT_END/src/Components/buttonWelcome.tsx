@@ -4,7 +4,7 @@ import React from 'react';
 interface ButtonProps {
   text: string; 
   type?: "button" | "submit" | "reset" | undefined;
-  welcomeButton?: boolean; // Propriedade welcomeButton opcional
+  welcomeButton?: boolean; 
 
 }
 

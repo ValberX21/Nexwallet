@@ -1,55 +1,40 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import fillBox from '../../assets/fillBox.png';
-import EmailInput from '../../Components/emailInput';
+import CpfInput from '../../Components/cpfInput';
 import PasswordInput from '../../Components/passwordInput';
-import { registerUser } from '../../services/registerUser';
+import { useLoginEvents } from '../../events/formEvents/loginEvents';
 
 const Login: React.FC = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+  const { formData, errors, handleInputChange, handleSubmit } = useLoginEvents();
 
-    const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setEmail(e.target.value);
-    };
+  return (
+    <div className="bg-darkBackground  flex justify-center items-center flex-col font-inter">
+      <img src={fillBox} alt="Descrição da imagem" className='loginImg md:w-[20%]' />
 
-    const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setPassword(e.target.value);
-    };
-
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        console.log('Email:', email);
-        console.log('Senha:', password);   
-        
-        var userData = {
-            email,        //Alterar para CPF
-            password,           
-        }      
-        registerUser(userData);             
-    };
-
-    return (
-        <div className="bg-[#171717] h-screen w-screen flex justify-center items-center flex-col font-inter">
-            <img src={fillBox} alt="Descrição da imagem" className='loginImg' />
-
-            <div className=" flex items-center justify-center flex-col ">
-                <div className="">
-                    <form onSubmit={handleSubmit}>
-                        <div className=" p-10  ">
-                        <EmailInput email={email} handleEmailChange={handleEmailChange} />
-                        <PasswordInput password={password} handlePasswordChange={handlePasswordChange} />
-                        </div>
-                        <div className="flex flex-col justify-center items-center ">
-                        <button className=" text-grayText-700 font-semibold font-inter text-lg w-64 bg-grayText-50  rounded  p-2" type="submit">LOGIN</button>
-                            <h3 className="pt-3 text-grayText-300">Esqueceu a senha? <Link to="/cadastro" className=" text-orangeGrid-500">Nova senha</Link></h3>
-                        </div>
-                    </form>
-                </div>
+      <div className="flex items-center justify-center flex-col">
+        <div>
+          <form onSubmit={handleSubmit}>
+            <div className="p-10">
+              <CpfInput cpf={formData.cpf} handleCpfChange={handleInputChange} />
+              {errors.cpf && <p className="text-red-500">{errors.cpf}</p>}
+              <PasswordInput password={formData.password} handlePasswordChange={handleInputChange} />
             </div>
+            <div className="flex flex-col justify-center items-center">
+              <button className="text-black font-semibold font-inter text-lg w-64 bg-light-200 rounded p-2" type="submit">LOGIN</button>
+              <h3 className="pt-3 text-light-400">Esqueceu a senha? <Link to="/cadastro" className="text-orange-500">Nova senha</Link></h3>
+              <div className="flex items-center justify-center space-x-2 my-2 w-64">
+                <hr className="flex-grow border-t border-light-500" />
+                <span className="px-2 text-light-500">Ou</span>
+                <hr className="flex-grow border-t border-light-500" />
+              </div>
+              <h3 className="text-light-400">Não tem uma conta? <Link to="/register" className="text-orange-500">Registre-se</Link></h3>
+            </div>
+          </form>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
+
 export default Login;
-
-

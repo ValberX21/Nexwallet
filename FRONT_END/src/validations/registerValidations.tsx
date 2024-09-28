@@ -6,10 +6,8 @@ export const validateEmail = (email: string): string => {
 export const validateCPF = (cpf: string): string => {
     const formattedValue = cpf.replace(/\D/g, '');
 
-    // Verifica se o CPF está completo
-    if (formattedValue.length !== 11) return 'CPF inválido';
+    //if (formattedValue.length !== 11) return 'CPF inválido';
 
-    // Validação do CPF
     const cpfNumbers = formattedValue.substring(0, 9);
     const cpfDigits = formattedValue.substring(9);
     const cpfArray = Array.from(cpfNumbers);
@@ -25,7 +23,7 @@ export const validateCPF = (cpf: string): string => {
     const remainder = sum % 11;
     const firstDigit = remainder < 2 ? 0 : 11 - remainder;
 
-    if (parseInt(cpfDigits[0]) !== firstDigit) return 'CPF inválido';
+    //if (parseInt(cpfDigits[0]) !== firstDigit) return 'CPF inválido';
 
     sum = 0;
     counter = 11;
@@ -39,15 +37,22 @@ export const validateCPF = (cpf: string): string => {
     const secondRemainder = sum % 11;
     const secondDigit = secondRemainder < 2 ? 0 : 11 - secondRemainder;
 
-    if (parseInt(cpfDigits[1]) !== secondDigit) return 'CPF inválido';
+    //if (parseInt(cpfDigits[1]) !== secondDigit) return 'CPF inválido';
 
-    return ''; 
+    return '';
 };
 
+export const formatCPF = (cpf: string): string => {
+    return cpf
+        .replace(/\D/g, '')
+        .slice(0, 11)  // Limite de 11 caracteres
+        .replace(/(\d{3})(\d)/, '$1.$2')
+        .replace(/(\d{3})(\d)/, '$1.$2')
+        .replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+};
 
-export const validateFullName = (fullName: string): string => {
-    const fullNameRegex = /^[a-zA-Z]+\s+[a-zA-Z]+$/;
-    return fullNameRegex.test(fullName) ? '' : 'Informe nome e sobrenome';
+export const validateName = (name: string): string => {
+    return name.length >= 3 ? '' : 'Nome deve conter pelo menos 3 caracteres';
 };
 
 export const validatePassword = (password: string): string => {

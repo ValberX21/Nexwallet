@@ -1,26 +1,50 @@
-export const registerUser = (userData: any) => {
-    try {
-      fetch('https://localhost:44390/GenerateToken/autentica',{
-        method:'POST',       
-        body: JSON.stringify({
-                 cpf:'123.456.789-10',
-                 email:userData.email,
-                 senha:userData.senha,
-        }),
-        headers:{
-          'Accept':'application/json',
-          'Content-Type':'application/json'
-          }
-    })
-    .then(res=>res.json())
-    .then((result)=>{
-        alert(result);
-        console.log(result)
-    },(error)=>{
-        alert(`Ops !, alguma coisa deu errado ${error}`);
-        console.log(error.message);
-    })
-    }catch (errorData) {
-      console.log(errorData);
-  }
+interface UserData {
+  firstName: string;
+  lastName: string;
+  password: string;
+  email: string;
+  cpf: string;
 }
+
+interface RegisterUserResponse {
+  success: boolean;
+  message: string;
+  // Adicione outras propriedades que a resposta da API possa ter
+}
+
+export const registerUser = async (userData: UserData): Promise<RegisterUserResponse> => {
+  try {
+      console.log("Enviando dados para registro:", userData);
+
+      const response = await fetch('https://localhost:44390/CadUsuario/adicionaNovoUsuario', {
+          method: 'POST',
+          body: JSON.stringify({
+              iD_USUARIO: 0,
+              nome: userData.firstName,
+              sobrE_NOME: userData.lastName,
+              senha: userData.password,
+              email: userData.email,
+              saldo: 0,
+              token: "",
+              cpf: userData.cpf
+          }),
+          headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+          }
+      });
+
+      if (!response.ok) {
+          const errorData = await response.json();
+          console.error('Erro na resposta do servidor:', errorData);
+          throw new Error(`HTTP error! Status: ${response.status}, Errors: ${JSON.stringify(errorData.errors)}`);
+      }
+
+      const result: RegisterUserResponse = await response.json();
+      console.log("Dados enviados com sucesso!", result);
+      return result;
+  } catch (error) {
+      console.error('Erro ao tentar registrar usuário:', error);
+      throw error;
+  }
+};
